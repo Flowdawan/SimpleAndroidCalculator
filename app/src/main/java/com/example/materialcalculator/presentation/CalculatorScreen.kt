@@ -34,7 +34,7 @@ fun CalculatorScreen(
                             bottomEnd = 25.dp
                         )
                     )
-                    .background(MaterialTheme.colorScheme.secondaryContainer)
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
                     .padding(
                         vertical = 50.dp,
                         horizontal = 11.dp

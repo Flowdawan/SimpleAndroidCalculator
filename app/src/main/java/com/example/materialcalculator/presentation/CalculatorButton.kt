@@ -27,7 +27,7 @@ fun CalculatorButton(
                     HighlightLevel.Neutral -> MaterialTheme.colorScheme.surfaceVariant
                     HighlightLevel.SemiHighlighted -> MaterialTheme.colorScheme.inverseSurface
                     HighlightLevel.Highlighted -> MaterialTheme.colorScheme.tertiary
-                    HighlightLevel.StronglyHighlighted -> MaterialTheme.colorScheme.primary
+                    HighlightLevel.StronglyHighlighted -> MaterialTheme.colorScheme.onPrimaryContainer
                 }
             )
             .clickable { onClick() },
@@ -41,7 +41,7 @@ fun CalculatorButton(
                 color = when(action.highlightLevel) {
                     is HighlightLevel.Neutral -> MaterialTheme.colorScheme.onSurfaceVariant
                     is HighlightLevel.SemiHighlighted -> MaterialTheme.colorScheme.inverseOnSurface
-                    is HighlightLevel.Highlighted -> MaterialTheme.colorScheme.onTertiary
+                    is HighlightLevel.Highlighted -> MaterialTheme.colorScheme.onTertiaryContainer
                     is HighlightLevel.StronglyHighlighted -> MaterialTheme.colorScheme.onPrimary
                 }
             )
