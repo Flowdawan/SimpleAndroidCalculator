@@ -36,8 +36,8 @@ fun CalculatorScreen(
                     )
                     .background(MaterialTheme.colorScheme.secondaryContainer)
                     .padding(
-                        vertical = 64.dp,
-                        horizontal = 16.dp
+                        vertical = 50.dp,
+                        horizontal = 11.dp
                     )
             )
             Spacer(modifier = Modifier.height(8.dp))
