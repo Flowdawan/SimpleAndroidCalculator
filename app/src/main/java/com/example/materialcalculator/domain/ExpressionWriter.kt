@@ -1,5 +1,6 @@
 package com.example.materialcalculator.domain
 
+
 class ExpressionWriter {
 
     var expression = ""
@@ -14,10 +15,11 @@ class ExpressionWriter {
             CalculatorAction.Clear -> {
                 expression = ""
             }
-            CalculatorAction.Decimal ->
+            CalculatorAction.Decimal -> {
                 if(canEnterDecimal()) {
                     expression += "."
                 }
+            }
             CalculatorAction.Delete -> {
                 expression = expression.dropLast(1)
             }
@@ -29,28 +31,29 @@ class ExpressionWriter {
                     expression += action.operation.symbol
                 }
             }
-            CalculatorAction.Parentheses ->
+            CalculatorAction.Parentheses -> {
                 processParentheses()
+            }
         }
     }
 
     private fun prepareForCalculation(): String {
-        val newExpression = expression.takeLastWhile { char ->
-            char in "$operationSymbols(."
+        val newExpression = expression.dropLastWhile {
+            it in "$operationSymbols(."
         }
-        if(newExpression.isEmpty()){
+        if(newExpression.isEmpty()) {
             return "0"
         }
         return newExpression
     }
 
     private fun processParentheses() {
-        val openingCount = expression.count() { char -> char == '(' }
-        val closingCount = expression.count() { char -> char == ')' }
+        val openingCount = expression.count { it == '(' }
+        val closingCount = expression.count { it == ')' }
         expression += when {
             expression.isEmpty() ||
                     expression.last() in "$operationSymbols(" -> "("
-            expression.last() in "012334567859)" &&
+            expression.last() in "0123456789)" &&
                     openingCount == closingCount -> return
             else -> ")"
         }
@@ -69,6 +72,6 @@ class ExpressionWriter {
         if(operation in listOf(Operation.ADD, Operation.SUBTRACT)) {
             return expression.isEmpty() || expression.last() in "$operationSymbols()0123456789"
         }
-        return expression.isNotEmpty() || expression.last() in "012346789)"
+        return expression.isNotEmpty() || expression.last() in "0123456789)"
     }
 }

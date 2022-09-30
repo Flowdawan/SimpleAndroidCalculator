@@ -1,31 +1,27 @@
 package com.example.materialcalculator.domain
 
-import java.lang.IllegalArgumentException
-
-class ExpressionParser (
+class ExpressionParser(
     private val calculation: String
-        ) {
+) {
 
     fun parse(): List<ExpressionPart> {
         val result = mutableListOf<ExpressionPart>()
 
         var i = 0
-
         while(i < calculation.length) {
-            val currentChar = calculation[i]
-
+            val curChar = calculation[i]
             when {
-               currentChar in operationSymbols -> {
-                   result.add(
-                       ExpressionPart.Op(operationFromSymbol(currentChar))
-                   )
-               }
-                currentChar.isDigit() -> {
+                curChar in operationSymbols -> {
+                    result.add(
+                        ExpressionPart.Op(operationFromSymbol(curChar))
+                    )
+                }
+                curChar.isDigit() -> {
                     i = parseNumber(i, result)
                     continue
                 }
-                currentChar in "()" -> {
-                    parseParentheses(currentChar, result)
+                curChar in "()" -> {
+                    parseParentheses(curChar, result)
                 }
             }
             i++
@@ -36,7 +32,7 @@ class ExpressionParser (
     private fun parseNumber(startingIndex: Int, result: MutableList<ExpressionPart>): Int {
         var i = startingIndex
         val numberAsString = buildString {
-            while (i < calculation.length && calculation[i] in "0123456789.") {
+            while(i < calculation.length && calculation[i] in "0123456789.") {
                 append(calculation[i])
                 i++
             }
@@ -45,10 +41,10 @@ class ExpressionParser (
         return i
     }
 
-    private fun parseParentheses(currentChar: Char, result: MutableList<ExpressionPart>) {
+    private fun parseParentheses(curChar: Char, result: MutableList<ExpressionPart>) {
         result.add(
             ExpressionPart.Parentheses(
-                type = when(currentChar) {
+                type = when(curChar) {
                     '(' -> ParenthesesType.Opening
                     ')' -> ParenthesesType.Closing
                     else -> throw IllegalArgumentException("Invalid parentheses type")

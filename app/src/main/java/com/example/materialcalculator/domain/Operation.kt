@@ -8,14 +8,9 @@ enum class Operation(val symbol: Char) {
     PERCENT('%'),
 }
 
-val operationSymbols = Operation
-    .values()
-    .map { operation ->
-        operation.symbol
-    }.joinToString("")
+val operationSymbols = Operation.values().map { it.symbol }.joinToString("")
 
 fun operationFromSymbol(symbol: Char): Operation {
-    return Operation.values().find { operation ->
-        operation.symbol == symbol
-    } ?: throw IllegalArgumentException("Invalid symbol")
+    return Operation.values().find { it.symbol == symbol }
+        ?: throw IllegalArgumentException("Invalid symbol")
 }
