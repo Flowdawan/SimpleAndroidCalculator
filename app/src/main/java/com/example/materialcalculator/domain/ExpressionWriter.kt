@@ -71,6 +71,9 @@ class ExpressionWriter {
     private fun canEnterOperation(operation: Operation): Boolean {
         if(operation in listOf(Operation.ADD, Operation.SUBTRACT)) {
             return expression.isEmpty() || expression.last() in "$operationSymbols()0123456789"
+        }else if(operation !in listOf(Operation.ADD, Operation.SUBTRACT) &&
+            (expression.isEmpty() || expression.last() == operation.symbol || expression.last() in "$operationSymbols")) {
+            return false
         }
         return expression.isNotEmpty() || expression.last() in "0123456789)"
     }

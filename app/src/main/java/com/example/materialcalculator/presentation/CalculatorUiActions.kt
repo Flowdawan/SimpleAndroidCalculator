@@ -44,7 +44,7 @@ val calculatorActions = listOf(
         action = CalculatorAction.Number(9)
     ),
     CalculatorUiAction(
-        text = "x",
+        text = "×",
         highlightLevel = HighlightLevel.SemiHighlighted,
         action = CalculatorAction.Op(Operation.MULTIPLY)
     ),
