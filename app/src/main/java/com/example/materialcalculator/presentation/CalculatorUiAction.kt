@@ -11,8 +11,8 @@ data class CalculatorUiAction(
 )
 
 sealed interface HighlightLevel {
-    object Neutral: HighlightLevel
-    object SemiHighlighted: HighlightLevel
-    object Highlighted: HighlightLevel
-    object StronglyHighlighted: HighlightLevel
+    object Neutral : HighlightLevel
+    object SemiHighlighted : HighlightLevel
+    object Highlighted : HighlightLevel
+    object StronglyHighlighted : HighlightLevel
 }

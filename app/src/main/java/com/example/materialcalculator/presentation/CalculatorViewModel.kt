@@ -9,7 +9,7 @@ import com.example.materialcalculator.domain.ExpressionWriter
 
 class CalculatorViewModel(
     private val writer: ExpressionWriter = ExpressionWriter()
-): ViewModel() {
+) : ViewModel() {
 
     var expression by mutableStateOf("")
         private set
