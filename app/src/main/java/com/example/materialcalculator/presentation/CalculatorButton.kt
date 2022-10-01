@@ -33,12 +33,12 @@ fun CalculatorButton(
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
-        if(action.text != null) {
+        if (action.text != null) {
             Text(
                 text = action.text,
                 fontSize = 36.sp,
                 textAlign = TextAlign.Center,
-                color = when(action.highlightLevel) {
+                color = when (action.highlightLevel) {
                     is HighlightLevel.Neutral -> MaterialTheme.colorScheme.onSurfaceVariant
                     is HighlightLevel.SemiHighlighted -> MaterialTheme.colorScheme.inverseOnSurface
                     is HighlightLevel.Highlighted -> MaterialTheme.colorScheme.onTertiaryContainer

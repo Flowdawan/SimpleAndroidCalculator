@@ -8,7 +8,7 @@ class ExpressionParser(
         val result = mutableListOf<ExpressionPart>()
 
         var i = 0
-        while(i < calculation.length) {
+        while (i < calculation.length) {
             val curChar = calculation[i]
             when {
                 curChar in operationSymbols -> {
@@ -32,7 +32,7 @@ class ExpressionParser(
     private fun parseNumber(startingIndex: Int, result: MutableList<ExpressionPart>): Int {
         var i = startingIndex
         val numberAsString = buildString {
-            while(i < calculation.length && calculation[i] in "0123456789.") {
+            while (i < calculation.length && calculation[i] in "0123456789.") {
                 append(calculation[i])
                 i++
             }
@@ -44,7 +44,7 @@ class ExpressionParser(
     private fun parseParentheses(curChar: Char, result: MutableList<ExpressionPart>) {
         result.add(
             ExpressionPart.Parentheses(
-                type = when(curChar) {
+                type = when (curChar) {
                     '(' -> ParenthesesType.Opening
                     ')' -> ParenthesesType.Closing
                     else -> throw IllegalArgumentException("Invalid parentheses type")
