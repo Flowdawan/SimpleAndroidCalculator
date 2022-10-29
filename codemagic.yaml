@@ -25,7 +25,7 @@ workflows:
       events: # List the events that trigger builds
         - push
       branch_patterns: # Include or exclude watched branches
-        - pattern: '*g'
+        - pattern: '*'
           include: true # /would need if the event is a pull request
           source: true  # g/would need if the event is a pull request
       cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
