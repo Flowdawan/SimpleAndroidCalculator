@@ -14,7 +14,7 @@ workflows:
           echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
       - name: Test
         script: ./gradlew test
-      test_report: app/build/test-results/**/*.xml
+        test_report: app/build/test-results/**/*.xml
       - name: Build Android release
         script: |
           ./gradlew bundleRelease # -> to create the .aab
