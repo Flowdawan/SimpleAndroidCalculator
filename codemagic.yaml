@@ -21,6 +21,10 @@ workflows:
           # gradlew assembleRelease # -> to create the .apk
     artifacts:
       - android/app/build/outputs/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - flo-m@gmx.atg
     triggering:
       events: # List the events that trigger builds
         - push
