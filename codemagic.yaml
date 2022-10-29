@@ -1,0 +1,31 @@
+workflows:
+  android: # workflow ID
+    name: Android Calculator       # workflow name displayed in Codemagic UI
+    instance_type: mac_mini_m1   # machine instance type
+    max_build_duration: 60       # build duration in minutes (min 1, max 120)
+    environment:
+      android_signing:
+        - keyfile_calculator
+      vars:
+        PACKAGE_NAME: "at.deflow.materialcalculator"
+    scripts:
+      - name: Set Android SDK location
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/local.properties"
+      - name: Test
+        script: ./gradlew test
+      test_report: app/build/test-results/**/*.xml
+      - name: Build Android release
+        script: |
+          ./gradlew bundleRelease # -> to create the .aab
+          # gradlew assembleRelease # -> to create the .apk
+    artifacts:
+      - android/app/build/outputs/**/*.aab
+    triggering:
+      events: # List the events that trigger builds
+        - push
+      branch_patterns: # Include or exclude watched branches
+        - pattern: 'dev_codemagic'
+          # include: true /would need if the event is a pull request
+          # source: true  /would need if the event is a pull request
+      cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
