@@ -26,6 +26,6 @@ workflows:
         - push
       branch_patterns: # Include or exclude watched branches
         - pattern: 'dev_codemagic'
-          # include: true /would need if the event is a pull request
-          # source: true  /would need if the event is a pull request
+          include: true # /would need if the event is a pull request
+          source: true  # g/would need if the event is a pull request
       cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
