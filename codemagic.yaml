@@ -1,5 +1,0 @@
-workflows:
-  android-workflow:
-    name: Hello world workflow
-    scripts:
-        - echo "Hello World!"
