@@ -21,10 +21,12 @@ android {
 
     signingConfigs {
         release {
-                keyPassword "%dJSSZ\\m4qQ!-;yKuGQL"
-                storeFile "/usr/share/android/keyfile.jks "
-                storePassword "%dJSSZ\\m4qQ!-;yKuGQL"
-                keyAlias "calculator"
+            if (file(project["storeFilePath"])) {
+                keyPassword project["keyPass"]
+                storeFile file(project["storeFilePath"])
+                storePassword project["storePass"]
+                keyAlias project["keyAlias"]
+            }
         }
     }
 
