@@ -19,13 +19,22 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            if (file(project["storeFilePath"])) {
+                keyPassword project["keyPass"]
+                storeFile file(project["storeFilePath"])
+                storePassword project["storePass"]
+                keyAlias project["keyAlias"]
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            keyPassword project["keyPass"]
-            storeFile file(project["storeFilePath"])
-            storePassword project["storePass"]
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
