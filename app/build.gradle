@@ -8,10 +8,10 @@ android {
 
     defaultConfig {
         applicationId "at.deflow.materialcalculator"
-        minSdk 21
+        minSdk 31
         targetSdk 32
         versionCode 1
-        versionName "1.0.3g"
+        versionName "1.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
