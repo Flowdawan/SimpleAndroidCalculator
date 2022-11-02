@@ -23,6 +23,9 @@ android {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyPassword project["keyPass"]
+            storeFile file(project["storeFilePath"])
+            storePassword project["storePass"]
         }
     }
     compileOptions {
