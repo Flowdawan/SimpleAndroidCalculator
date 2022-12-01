@@ -8,9 +8,6 @@ workflows:
         - keyfile_calculator
       vars:
         PACKAGE_NAME: "at.deflow.materialcalculator"
-    cache:
-      cache_paths:
-        - $HOME/.gradle/caches
     scripts:
       - name: Set Android SDK location
         script: |
