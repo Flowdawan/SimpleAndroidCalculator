@@ -10,7 +10,7 @@ workflows:
         PACKAGE_NAME: "at.deflow.materialcalculator"
     cache:
       cache_paths:
-        - ~/.gradle/caches
+        - $HOME/.gradle/caches
     scripts:
       - name: Set Android SDK location
         script: |
